@@ -5,6 +5,7 @@
 - Flyway CLI (can be installed with `brew install flyway`)
 - Github.com account (to get or fork the repo)
 - Docker Desktop (to run the database and flyway)
+- Lazy Docker - not absolutely necessary, but a greate utility to have.
 
 ## Installing and Setup
 

@@ -1,0 +1,27 @@
+{
+  "name": "docker-db-playground",
+  "version": "1.0.0",
+  "description": "## Requirements",
+  "homepage": "https://github.com/johnnycricket/docker-db-playground#readme",
+  "bugs": {
+    "url": "https://github.com/johnnycricket/docker-db-playground/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnycricket/docker-db-playground.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.4.0",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  }
+}
