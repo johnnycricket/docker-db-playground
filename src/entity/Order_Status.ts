@@ -1,11 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
-import { UUID } from "typeorm/driver/mongodb/bson.typings"
 
 @Entity()
 export class Order_Status {
     @PrimaryGeneratedColumn()
-    id: UUID
+    id: number
 
-    @Column()
+    @Column({ type: 'varchar', length: 100, nullable: true })
     status: string
 }

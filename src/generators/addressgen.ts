@@ -1,18 +1,9 @@
 import { faker } from "@faker-js/faker";
-import { UUID } from "typeorm/driver/mongodb/bson.typings";
-import { user } from "./usergen";
+import { Users } from "../entity/Users";
+import { Address } from "../entity/Address";
 
-export interface address {
-    id?: UUID;
-    user_id: UUID;
-    street: string;
-    city: string;
-    state: string;
-    zip: string;
-};
-
-export const addressgen = (users: user[]): address[] => {
-    const addresses: address[] = [];
+export const addressgen = (users: Users[]): Address[] => {
+    const addresses: Address[] = [];
     users.forEach(user => {
         addresses.push({
             user_id: user.id,

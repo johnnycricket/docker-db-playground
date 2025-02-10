@@ -1,11 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
-import { UUID } from "typeorm/driver/mongodb/bson.typings"
 
 @Entity()
-export class User {
+export class Users {
 
     @PrimaryGeneratedColumn()
-    id: UUID
+    id?: number
 
     @Column()
     username: string

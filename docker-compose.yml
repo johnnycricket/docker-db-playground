@@ -1,0 +1,41 @@
+name: populator
+services:
+  db:
+    image: postgres:14.4-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mockdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - populator_network
+  flyway:
+    image: flyway/flyway:latest
+    volumes:
+      - ${PWD}/migrations:/flyway/sql
+    environment:
+      - FLYWAY_USER=user
+      - FLYWAY_PASSWORD=password
+      - FLYWAY_URL=jdbc:postgresql://db:5432/mockdb
+    networks:
+      - populator_network
+    depends_on:
+      - db
+    command: -locations=filesystem:/flyway/sql migrate
+  populator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - populator_network
+    depends_on:
+      - db
+      - flyway
+networks:
+  populator_network:
+volumes:
+  db:
+    driver: local

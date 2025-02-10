@@ -1,14 +1,14 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { UUID } from "typeorm/driver/mongodb/bson.typings";
-import { User } from "./User";
+import { Users } from "./Users";
 
 @Entity()
 export class Address {
     @PrimaryGeneratedColumn()
-    id: UUID
+    id?: number
     
-    @OneToOne(() => User, user => user.id)
-    user_id: UUID
+    @OneToOne(() => Users, user => user.id)
+    user_id: number
 
     @Column()
     street: string

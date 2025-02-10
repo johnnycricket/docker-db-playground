@@ -1,22 +1,15 @@
 import { faker } from "@faker-js/faker";
-import { UUID } from "typeorm/driver/mongodb/bson.typings";
+import pino from "pino";
+import { Users } from "../entity/Users";
 
-export interface user {
-    id?: UUID;
-    firstName: string;
-    lastName: string;
-    username: string;
-    email: string;
-    password: string;
-}
-
-export const usergen = (count: number = 5): user[] => {
-    const users: user[] = [];
+export const usergen = (count: number = 5): Users[] => {
+    const logger = pino;
+    const users: Users[] = [];
     for (let i = 0; i < count; i++) {
         users.push({
-            firstName: faker.person.firstName(),
-            lastName: faker.person.lastName(),
             username: faker.internet.username(),
+            first_name: faker.person.firstName(),
+            last_name: faker.person.lastName(),
             email: faker.internet.email(),
             password: faker.internet.password()
         });
