@@ -4,7 +4,9 @@ import { Users } from "./Users";
 
 @Entity()
 export class Address {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('identity', {
+        generatedIdentity: 'ALWAYS'
+    })
     id?: number
     
     @OneToOne(() => Users, user => user.id)
@@ -21,4 +23,7 @@ export class Address {
 
     @Column()
     zip: string
+
+    @Column()
+    created_at: Date
 }

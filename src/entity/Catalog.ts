@@ -3,7 +3,9 @@ import { Product_Status } from "./Product_Status"
 
 @Entity()
 export class Catalog {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('identity', {
+        generatedIdentity: 'ALWAYS'
+    })
     id?: number
 
     @Column()
@@ -16,6 +18,7 @@ export class Catalog {
     price: number
 
     @OneToOne(() => Product_Status, product_status => product_status.id)
+    @Column()
     status: number
 
     @Column()

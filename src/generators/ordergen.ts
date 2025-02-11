@@ -35,17 +35,15 @@ const thingsordered = (catalog: Catalog[]): { products: products_ordered[] } => 
 export const ordergen = (users: Users[], addresses: Address[], catalog: Catalog[]): order[] => {
     const orders: order[] = [];
     users.forEach(user => {
-        addresses.forEach(address => {
-            const list = thingsordered(catalog);
-
-            orders.push({
-                user_id: user.id,
-                address_id: address.id,
-                products: list.products,
-                status: faker.number.int({min: 0, max: 3}),
-                updated_at: new Date(),
-                total: faker.number.int({min: 1, max: 1000})
-            });
+        const list = thingsordered(catalog);
+        const addressid = addresses.filter(address => address.user_id === user.id);
+        orders.push({
+            user_id: user.id,
+            address_id: addressid[0].id || 0,
+            products: list.products,
+            status: faker.number.int({min: 0, max: 3}),
+            updated_at: new Date(),
+            total: faker.number.int({min: 1, max: 1000})
         });
     });
     return orders;

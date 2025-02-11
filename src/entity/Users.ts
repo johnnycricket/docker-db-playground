@@ -3,7 +3,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 @Entity()
 export class Users {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn(
+    'identity', {
+        generatedIdentity: 'ALWAYS'
+    })
     id?: number
 
     @Column()

@@ -6,13 +6,17 @@ import { products_ordered } from "../generators/ordergen";
 
 @Entity()
 export class Orders {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('identity', {
+        generatedIdentity: 'ALWAYS'
+    })
     id?: number
 
     @OneToOne(() => Users, user => user.id)
+    @Column()
     user_id: number
 
     @OneToOne(() => Address, address => address.id)
+    @Column()
     address_id: number
 
     @Column({ type: 'jsonb', nullable: false })
@@ -22,5 +26,6 @@ export class Orders {
     total: number
 
     @OneToOne(() => Order_Status, order_status => order_status.id)
+    @Column()
     status: number
 }

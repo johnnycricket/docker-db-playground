@@ -10,7 +10,8 @@ export const addressgen = (users: Users[]): Address[] => {
             street: faker.location.streetAddress(),
             city: faker.location.city(),
             state: faker.location.state(),
-            zip: faker.location.zipCode()
+            zip: faker.location.zipCode(),
+            created_at: faker.date.recent()
         });
     });
     return addresses;
